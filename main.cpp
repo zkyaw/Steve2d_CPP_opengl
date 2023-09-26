@@ -8,7 +8,7 @@ void bgc();
 void keyboardFunc(unsigned char key, int x, int y);
 
 
-int currentScene = 1;
+int currentScene = 0;
 
 void lineSteve(){
 	glBegin(GL_LINES); // head
