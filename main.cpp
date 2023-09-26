@@ -10,13 +10,13 @@ int main(int argc, char** argv) {
 	
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(400, 400);
+	glutInitWindowSize(1920, 1080);
 	glutCreateWindow("Steve");
 	
 	initRendering();
-	bgc();
 	glutDisplayFunc(drawScene);
 	glutReshapeFunc(handleResize);
+	bgc();
 	glutMainLoop();
 	return 0;
 }
@@ -26,14 +26,12 @@ void drawScene(){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	
-	glBegin(GL_QUAD_STRIP); // r eye
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex2f(-3.0f, 11.0f);
-	glVertex2f(-3.0f, 12.0f);
-	glVertex2f(-2.0f, 11.0f);
-	glVertex2f(-2.0f, 12.0f);
-	glVertex2f(-1.0f, 11.0f);
-	glVertex2f(-1.0f, 12.0f);
+	glPointSize(10.0);
+	
+	glBegin(GL_POINTS); //Patches
+	glVertex2f(-2.5, 11.5); // r eye
+	glColor3f(0.29f, 0.15f, 0.56f);
+	glVertex2f(-1.5, 11.5);
 	glEnd();
 	
 	glBegin(GL_QUADS); // head
@@ -44,8 +42,6 @@ void drawScene(){
 	glVertex2f(-4.0f,16.0f);
 	glEnd();
 	
-	glPointSize(10.0);
-
 	glBegin(GL_POLYGON); // Torso
 	glColor3f(0.08f,0.8f,0.87f);
 	glVertex2f(-4.0f, 4.0f); //G
@@ -112,7 +108,7 @@ void initRendering(){
 }
 
 void handleResize(int w, int h){
-	glViewport(0,0,w,h);
+	glViewport(0,0,400,400);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-20.0,20.0,-20.0,20.0,-20.0,20.0); //left right bottom top near far
@@ -121,5 +117,35 @@ void handleResize(int w, int h){
 
 void bgc(){
 	
-	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+
+    int windowWidth = glutGet(GLUT_WINDOW_WIDTH);
+    int windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
+    float aspectRatio = (float)windowWidth / (float)windowHeight;
+
+    int numRows = 85; 
+    int numCols = 85 * aspectRatio; 
+
+    float squareSizeX = 2.0f / numCols;
+    float squareSizeY = 2.0f / numRows;
+
+    for (int i = 0; i < numCols; i++) {
+        for (int j = 0; j < numRows; j++) {
+            if ((i + j) % 2 == 0) {
+                glColor3f(1.0f, 1.0f, 1.0f); 
+            } else {
+                glColor3f(0.5f, 0.5f, 0.5f); 
+            }
+
+            glBegin(GL_QUADS);
+            glVertex2f(i * squareSizeX - 1, j * squareSizeY - 1);
+            glVertex2f((i + 1) * squareSizeX - 1, j * squareSizeY - 1);
+            glVertex2f((i + 1) * squareSizeX - 1, (j + 1) * squareSizeY - 1);
+            glVertex2f(i * squareSizeX - 1, (j + 1) * squareSizeY - 1);
+            glEnd();
+        }
+    }
+
+    glutSwapBuffers();
 }
