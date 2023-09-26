@@ -185,5 +185,4 @@ void coloredSteve(){
 	glVertex2f(-4.0f, -14.0f);
 	glEnd();
 	
-	glutSwapBuffers();
 }
