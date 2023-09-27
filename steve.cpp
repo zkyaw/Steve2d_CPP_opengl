@@ -2,6 +2,12 @@
 #include <GL/glut.h>
 #include "steve.h"
 
+/*float cyanShades[][3] = {
+    {0.0f, 1.0f, 1.0f},  // Cyan
+    {0.0f, 0.9f, 0.9f},  // A slightly darker shade
+    {0.0f, 0.8f, 0.8f},  // An even darker shade
+    // Add more shades as needed
+};*/
 void lineSteve(){
 	glLineWidth(3.0f);
 	glBegin(GL_LINES); // head
@@ -191,9 +197,6 @@ void coloredSteve(){
 	glVertex2f(-4.0f, -14.0f);
 	glEnd();
 	
-<<<<<<< HEAD
 	environment();
 
-=======
->>>>>>> c2b0bae0df138e61460bab05fe7a64ddbfa96fc3
 }
