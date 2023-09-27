@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o steve.o
-LINKOBJ  = main.o steve.o
+OBJ      = main.o steve.o environment.o
+LINKOBJ  = main.o steve.o environment.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"C:/Users/Admin/Downloads/freeglut-MSVC-3.0.0-2.mp/freeglut/lib/x64" -lglu32 -lfreeglut -lopengl32
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/Admin/Downloads/freeglut-MSVC-3.0.0-2.mp/freeglut/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Users/Admin/Downloads/freeglut-MSVC-3.0.0-2.mp/freeglut/include"
@@ -29,3 +29,6 @@ main.o: main.cpp
 
 steve.o: steve.cpp
 	$(CPP) -c steve.cpp -o steve.o $(CXXFLAGS)
+
+environment.o: environment.cpp
+	$(CPP) -c environment.cpp -o environment.o $(CXXFLAGS)

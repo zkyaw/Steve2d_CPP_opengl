@@ -4,5 +4,6 @@
 // Declaration of the lineSteve() function
 void lineSteve();
 void coloredSteve();
+void environment();
 
 #endif // STEVE_H

@@ -3,6 +3,7 @@
 #include "steve.h"
 
 void lineSteve(){
+	glLineWidth(3.0f);
 	glBegin(GL_LINES); // head
 	glColor3f(0.87f,0.65f,0.29f);
 	glVertex2f(-4.0f,8.0f);
@@ -107,16 +108,21 @@ void lineSteve(){
 	glVertex2f(-4.0f, -14.0f);
 	glVertex2f(-4.0f, -16.0f);
 	glEnd();
+	
+	environment();
 }
 
 void coloredSteve(){	
 
-	glBegin(GL_POINTS); //Patches
-	glPointSize(10.0);	
+	glPointSize(10.0);
+	glBegin(GL_POINTS); //Patches		
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glVertex2f(-2.5, 11.5); // r eye
 	glColor3f(0.29f, 0.15f, 0.56f);
 	glVertex2f(-1.5, 11.5);
+	
+	//l eye
+	
 	glEnd();
 	
 	glBegin(GL_QUADS); // head
@@ -185,5 +191,6 @@ void coloredSteve(){
 	glVertex2f(-4.0f, -14.0f);
 	glEnd();
 	
-	glutSwapBuffers();
+	environment();
+
 }
