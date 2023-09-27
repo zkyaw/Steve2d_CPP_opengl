@@ -191,6 +191,9 @@ void coloredSteve(){
 	glVertex2f(-4.0f, -14.0f);
 	glEnd();
 	
+<<<<<<< HEAD
 	environment();
 
+=======
+>>>>>>> c2b0bae0df138e61460bab05fe7a64ddbfa96fc3
 }
